@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.itmo.prog.lab5"},{"l":"ru.itmo.prog.lab5.commands"},{"l":"ru.itmo.prog.lab5.managers"},{"l":"ru.itmo.prog.lab5.object"},{"l":"ru.itmo.prog.lab5.object.builders"},{"l":"ru.itmo.prog.lab5.utils"}];updateSearchResults();
