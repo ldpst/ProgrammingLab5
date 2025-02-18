@@ -8,9 +8,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import static java.lang.System.exit;
 
 /**
  * Метод для загрузки и сохранения коллекции в csv файл
@@ -78,21 +81,28 @@ public class CSVManager {
             } catch (Exception e) {
                 stream.printErr("При чтении данных из файла дата " + movieLine[operatorBirthday] + " не была полноценно распознана.\n");
             }
-            Movie movie = new Movie(Integer.parseInt(movieLine[id]),
-                    movieLine[name],
-                    new Coordinates(Float.parseFloat(movieLine[coordinatesX]),
-                            Integer.parseInt(movieLine[coordinatesY])),
-                    movieLine[creationDate],
-                    Long.parseLong(movieLine[oscarCount]),
-                    (movieLine[genre].equals("null")) ? null : MovieGenre.valueOf(movieLine[genre]),
-                    (movieLine[mpaaRating].equals("null")) ? null : MpaaRating.valueOf(movieLine[mpaaRating]),
-                    ((movieLine[operatorName].equals("null") && date == null && movieLine[operatorWeight].equals("null") && movieLine[operatorPassportID].equals("null")) ? null :
-                            new Person(
-                                    movieLine[operatorName],
-                                    date,
-                                    Long.parseLong(movieLine[operatorWeight]),
-                                    movieLine[operatorPassportID]
-                            )));
+            Movie movie;
+            try {
+                movie = new Movie(Integer.parseInt(movieLine[id]),
+                        movieLine[name],
+                        new Coordinates(Float.parseFloat(movieLine[coordinatesX]),
+                                Integer.parseInt(movieLine[coordinatesY])),
+                        movieLine[creationDate],
+                        Long.parseLong(movieLine[oscarCount]),
+                        (movieLine[genre].equals("null")) ? null : MovieGenre.valueOf(movieLine[genre]),
+                        (movieLine[mpaaRating].equals("null")) ? null : MpaaRating.valueOf(movieLine[mpaaRating]),
+                        ((movieLine[operatorName].equals("null") && date == null && movieLine[operatorWeight].equals("null") && movieLine[operatorPassportID].equals("null")) ? null :
+                                new Person(
+                                        movieLine[operatorName],
+                                        date,
+                                        Long.parseLong(movieLine[operatorWeight]),
+                                        movieLine[operatorPassportID]
+                                )));
+            } catch (NumberFormatException e) {
+                stream.printErr("Где-то в файле " + loadFileNameFromEnvironment() + " введена неизвестная строка вместо числа c:\n");
+                exit(-1);
+                return -1;
+            }
             collectionManager.add(movie);
             maxId = Long.max(maxId, movie.getId());
             line = br.readLine();
