@@ -63,8 +63,7 @@ public class Runner {
             try {
                 commands.get(splitCommand[0]).runWithPermission(splitCommand);
             } catch (Exception e) {
-                throw e;
-//                stream.printErr("Команда не распознана\n");
+                stream.printErr("Команда не распознана\n");
             }
         }
         exit();
