@@ -1,0 +1,4 @@
+nextId,id,name,coordinates.x,coordinates.y,creationDate,oscarsCount,genre,mpaaRating,operator.name,operator.birthday,operator.weight,operator.passportID
+4,1,Interstellar,10.0,12,2025-02-18T13:40:22.039228427+03:00[Europe/Moscow],2,DRAMA,NC_17,Alex Jacob,Sat Jan 01 00:00:00 MSK 2000,70,193994
+4,2,FilmNomerDva,0.0,0,2025-02-18T13:41:30.740028556+03:00[Europe/Moscow],10,MUSICAL,R,Jack Alexer,Sun Jan 02 00:00:00 MSK 2000,71,948384
+4,3,EschoOdinFilm,18.0,30,2025-02-18T13:42:07.497684250+03:00[Europe/Moscow],1,HORROR,G,null,null,null,null
