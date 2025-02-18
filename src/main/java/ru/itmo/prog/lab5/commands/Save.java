@@ -33,7 +33,6 @@ public class Save extends Command {
             stream.printErr("Переменная окружения с названием файла Lab5FileName пуста\n");
             return;
         }
-        filePath = "config/" + filePath + ".csv";
         try (FileOutputStream fos = new FileOutputStream(filePath)) {
             fos.write((header + "\n").getBytes());
             for (Movie movie : collectionManager.getMovies()) {
